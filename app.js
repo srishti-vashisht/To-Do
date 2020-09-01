@@ -3,17 +3,25 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+app.set('view engine','ejs');                              /*specifying that we are using EJS with express */
+
 app.get("/",function(req,res){
 
-    var today = new Date();
+    var today = new Date(); 
+    var currentDay = today.getDay();
+    var day ="";                                /*res.render will use the view engine to render a particular page*/
 
-    if(today.getDay()==6 || today.getDay()==0)            /*0 represents Sunday , 6- Saturday*/
+    if(currentDay===6 || currentDay===0)            /*0 represents Sunday , 6- Saturday*/
     {
-        res.send("Yay!!,it's the weekend");
-    }else{
-        res.send("I need to work");
+        day = "Weekend";
+                                         
+    }else{                                      
+        day = "Weekday";
     }
-})
+
+
+    res.render("list",{kindofDay:day});                       /*Render list and passing javascript object which has a key value pair */
+})                                                            /*key value = as defined in .ejs file*/
 
 app.listen(3000,function(){
     console.log("Server running on port 3000");
