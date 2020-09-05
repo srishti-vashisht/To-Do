@@ -7,6 +7,8 @@ app.set('view engine','ejs');                              /*specifying that we 
 
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.use(express.static("public"));                        /*specifying location of staic files in public folder, explicitly wants express to serve files in public folder */
+
 var items =["Buy Food","Read Books","Excercise"];                                             /*items is an array as we need to save the data that we are adding up in the list */
 
 app.get("/",function(req,res){                                
