@@ -8,6 +8,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>It's a <%= kindofDay %> </h1>                       <!-- will add marker that will tell file that here you need to place particular variable, and replace the variable with it's value when the page is rendered-->
+
+    <h1><%=kindofDay %> </h1>
+    <ul>                
+          <%for(var i=0;i<newListItems.length;i++){   %>                                        <!--new list item added to do list --></newListItems.length>
+                <li><%=newListItems[i]%></li>
+                 
+          <%}    %>                            
+                                                                           
+    </ul>
+    
+    <form action="/" method = "POST">
+        <input type="text" name="newItem">
+        <button type="submit" name ="button">Add</button>
+    
+    </form>
+
+
+
 </body>
 </html>
